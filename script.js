@@ -2,7 +2,7 @@ const apiKey = "21dadbaab79f6d304104f83b62b25b31"; // Replace with your OpenWeat
 
 function getWeatherByCity() {
   const city = document.getElementById("cityInput").value;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=metric`;
 
   fetch(url)
     .then(res => res.json())
@@ -21,7 +21,7 @@ function getLocationWeather() {
     navigator.geolocation.getCurrentPosition(position => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+      const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=metric`;
 
       fetch(url)
         .then(res => res.json())
@@ -47,7 +47,7 @@ function displayWeather(data) {
 }
 
 function getForecast(lat, lon) {
-  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=metric`;
 
   fetch(url)
     .then(res => res.json())
